@@ -1,6 +1,0 @@
-% Matlab code
-
-% 1) Randomly generate a set of points
-
-rng('default'); % For reproducibility
-X = 
