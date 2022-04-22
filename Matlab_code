@@ -2,7 +2,7 @@
 
 % 1.1) Randomly generate a set of points
 
-rng('default');  % For reproducibility
+rng('default'); 
 X = [gallery('normaldata',[5000 2],120)-2; ...
     gallery('normaldata',[5000 2],120)+4];
 y = [ones(5000,1);-1*(ones(5000,1))];
