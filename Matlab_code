@@ -3,15 +3,31 @@
 % 1.1) Randomly generate a set of points
 
 rng('default');  % For reproducibility
-X = [gallery('normaldata',[1000 2],120)-2; gallery('normaldata',[1000 2],120)+4];
-y = [ones(1000,1);-1*(ones(1000,1))]; scatter(X(:,1),X(:,2),100,y,'filled');
-scatter(X(:,1), X(:,2), 100, y 'filled')
+X = [gallery('normaldata',[5000 2],120)-2; ...
+    gallery('normaldata',[5000 2],120)+4];
+y = [ones(5000,1);-1*(ones(5000,1))];
+scatter(X(:,1),X(:,2),100,y,'filled')
 
 % 1.2) Give labels to 2% of the points
-
-X_samp=[X(1:100,1:2); X(1901:2000,1:2)];
-y_samp=[y(1:100); y(1901:2000)];
+X_samp=[X(1:100,1:2); X(9901:10000,1:2)];
+y_samp=[y(1:100); y(9901:10000)];
 scatter(X(:,1),X(:,2),'filled')
 hold on 
 scatter(X_samp(:,1),X_samp(:,2),100,y_samp,'filled')
 hold off
+
+D_samp=zeros(200,200);
+for i=1:200
+    for j=1:200
+        D_samp(i,j)=norm(X_samp(i,:)-X_samp(j,:));
+        D_samp(j,i)=D_samp(i,j);
+    end
+end
+
+D=zeros(10000,10000);
+for i=1:10000
+    for j=1:10000
+        D(i,j)=norm(X(i,:)-X(j,:));
+        D(j,i)=D(i,j);
+    end
+end
