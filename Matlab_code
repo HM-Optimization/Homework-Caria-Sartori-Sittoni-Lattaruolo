@@ -1,7 +1,6 @@
 % Homework Optimization
 
 % 1.1) Randomly generate a set of points
-
 rng('default'); 
 X = [gallery('normaldata',[5000 2],120)-2; ...
     gallery('normaldata',[5000 2],120)+4];
@@ -16,17 +15,19 @@ hold on
 scatter(X_samp(:,1),X_samp(:,2),100,y_samp,'filled')
 hold off
 
-D_samp=zeros(200,200);
-for i=1:200
-    for j=1:200
+% 2.1) Calculate distances between unlabeled
+D_samp=zeros(9800,9800);
+for i=201:10000
+    for j=201:10000
         D_samp(i,j)=norm(X_samp(i,:)-X_samp(j,:));
         D_samp(j,i)=D_samp(i,j);
     end
 end
 
+% 2.2) Calculate distances between labeled and unlabeled
 D=zeros(10000,10000);
-for i=1:10000
-    for j=1:10000
+for i=1:200
+    for j=201:10000
         D(i,j)=norm(X(i,:)-X(j,:));
         D(j,i)=D(i,j);
     end
