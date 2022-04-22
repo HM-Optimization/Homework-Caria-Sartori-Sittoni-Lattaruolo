@@ -1,0 +1,17 @@
+% Homework Optimization
+
+% 1.1) Randomly generate a set of points
+
+rng('default');  % For reproducibility
+X = [gallery('normaldata',[1000 2],120)-2; gallery('normaldata',[1000 2],120)+4];
+y = [ones(1000,1);-1*(ones(1000,1))]; scatter(X(:,1),X(:,2),100,y,'filled');
+scatter(X(:,1), X(:,2), 100, y 'filled')
+
+% 1.2) Give labels to 2% of the points
+
+X_samp=[X(1:100,1:2); X(1901:2000,1:2)];
+y_samp=[y(1:100); y(1901:2000)];
+scatter(X(:,1),X(:,2),'filled')
+hold on 
+scatter(X_samp(:,1),X_samp(:,2),100,y_samp,'filled')
+hold off
