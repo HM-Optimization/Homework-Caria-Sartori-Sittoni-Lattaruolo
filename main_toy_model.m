@@ -56,8 +56,6 @@ for i=1:u
 end
 L = max(W_l+W_u)-lambda_min;
 
-% fixed step
-alpha = 1/L;
 
 %Minimizziamo la loss function
 y0 = -1 + 2.*rand(u,1); %cioè delle etichette casuali per i dati no-lab 
@@ -65,8 +63,32 @@ y0 = -1 + 2.*rand(u,1); %cioè delle etichette casuali per i dati no-lab
 eps = 1e-4; %tolleranza
 maxit = 100000; %iterazioni max
 
-% metodo del gradiente con stepsize fisso
-y_new = GD_fixed(alpha,y0,maxit,eps,y_samp,W,W_samp,u);  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%METODO DEL GRADIENTE CLASSICO
+
+%con stepsize fisso
+alpha = 1/L;
+y_GD_fix = GD_fixed(alpha,y0,maxit,eps,y_samp,W,W_samp,u); 
+%con armijo rule
+%bla bla
+
+%con exact line search
+%bla bla
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BCGD with cyclic rule
+% Bla Bla
+
+
+
+
+
+
+
+
+
+
 
 
 
