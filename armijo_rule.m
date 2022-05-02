@@ -1,6 +1,6 @@
 % Armijo Rule
 
-function[alpha] = armijo_rule(delta, gamma, grad, x, y_samp, W, W_samp)
+function [alpha] = armijo_rule(delta, gamma, grad, x, y_samp, W, W_samp)
 
 D = 10;
 m = 0;
