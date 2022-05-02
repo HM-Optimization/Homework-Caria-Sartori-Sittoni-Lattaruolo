@@ -1,5 +1,6 @@
-function[grad] = f_deriv(y,y_samp,W,W_samp,u)
+function[grad] = f_deriv(y,y_samp,W,W_samp)
 
+u=len(y);
 grad = zeros([u,1]);
 sum1 = 0;
 sum2 = 0;
