@@ -13,7 +13,7 @@ for i=1:u
     den = den + sum(W_samp(:,i))*grad(i)^2 + W(i,:)*(grad(i)-grad)*grad(i);
 end
 
-alpha=-num/den;
+alpha=num/den;
 
 end
 
