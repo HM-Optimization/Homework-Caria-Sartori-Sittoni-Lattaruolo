@@ -4,8 +4,8 @@ function [alpha]=exact_line_search(y,y_samp,W,W_samp,grad)
 % grad è la direzione su cui stiamo cercando l'alpha ottimale
 % a partire da y
 
-u=len(y);
-l=len(y_samp);
+u=length(y);
+l=length(y_samp);
 num=0;
 den=0;
 for i=1:u
