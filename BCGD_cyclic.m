@@ -1,7 +1,7 @@
 % Cyclic BCGD method
 
 function [y, timeVec, Norms, accuracy] = ...
-    BCGD_cyclic_fixed(alpha,y,maxit,eps,y_samp,W,W_samp,stepsize,y_exact,delta)
+    BCGD_cyclic(alpha,y,maxit,eps,y_samp,W,W_samp,stepsize,y_exact,delta)
 
 u = length(y);
 
