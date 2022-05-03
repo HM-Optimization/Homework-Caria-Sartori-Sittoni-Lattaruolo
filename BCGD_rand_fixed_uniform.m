@@ -1,4 +1,4 @@
-function[y] = BCGD_rand_fixed_uniform(alpha,y0,maxit,eps,y_samp,W,W_samp)
+function[y, timeVec, Norms, accuracy] = BCGD_rand_fixed_uniform(alpha,y0,maxit,eps,y_samp,W,W_samp)
 
 % choose a starting point
 y = y0;
