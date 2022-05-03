@@ -45,8 +45,9 @@ W_samp= exp(-D_samp);
 W = exp(-D);
 
 % Calcolo L, lipschitz constant
-lambda_min = min(eig(W));
 
+% lambda_min = min(eig(W));
+lambda_max = max(eig(W));
 W_l = zeros([1,u]);
 W_u = zeros([1,u]);
 
@@ -54,31 +55,43 @@ for i=1:u
     W_l = sum(W_samp(:,i));
     W_u = sum(W(:,i));
 end
-L = max(W_l+W_u)-lambda_min;
+%L = max(W_l+W_u)-lambda_min questa in realtà funziona ugualmente
+L=sqrt(max(W_l+W_u)^2+lambda_max^2);
 
 
 %Minimizziamo la loss function
 y0 = -1 + 2.*rand(u,1); %cioè delle etichette casuali per i dati no-lab 
 %y0 =sign( -1 + 2.*rand(u,1) ) per avere un label "realistico"
 eps = 1e-4; %tolleranza
-maxit = 100000; %iterazioni max
+maxit = 1000; %iterazioni max
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %METODO DEL GRADIENTE CLASSICO
 
-%con stepsize fisso
-alpha = 1/L;
-y_GD_fix = GD_fixed(alpha,y0,maxit,eps,y_samp,W,W_samp,u); 
+%con stepsize fisso 
+step_size=1;
+alpha=1/L;
+[y_GD_t, timeVec, Norms_t, accuracy]= GD_fixed(alpha,maxit,eps,y0,y_samp,W,W_samp,step_size); 
+
 %con armijo rule
-%bla bla
+%step_size=2
+%[y_GD_arm, timeVec, Norms, accuracy]= GD_fixed(alpha,maxit,eps,y0,y_samp,W,W_samp,step_size)
 
 %con exact line search
-%bla bla
+%step_size=3
+%[y_GD_arm, timeVec, Norms, accuracy]= GD_fixed(alpha,maxit,eps,y0,y_samp,W,W_samp,step_size)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BCGD with cyclic rule
 % Bla Bla
+
+
+
+
+
+
+
 
 
 
