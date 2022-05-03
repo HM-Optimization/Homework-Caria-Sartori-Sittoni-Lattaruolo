@@ -1,15 +1,14 @@
-function [y, timeVec, Norms, accuracy] = GD_fixed(alpha,maxit,eps,y,y_samp,W,W_samp,step_size)
+function [y, timeVec, Norms, accuracy] = GD_fixed(alpha,maxit,eps,y,y_samp,W,W_samp,step_size, y_exact)
 %step_size = metodo per il calcolo dello step size che scegliamo
 % Gradient descent per stepsize fisso
 
-Norms=zeros([1,maxit]);
-timeVec=0;
-accuracy=1;
+time=[1];
 switch step_size
 
     case 1  %alpha fisso
 
         for i = 1:maxit
+            tic;
             grad = f_deriv(y,y_samp,W,W_samp);
   
             Norm = norm(grad);
@@ -19,9 +18,12 @@ switch step_size
                 break
             end
             y = y - alpha.*grad;
+            time(i)=toc;
+            accuracy(i)=1-sum(abs(y-y_exact)/length(y));
         end
     case 2  %armijo
         for i=1:maxit
+            tic;
 
             grad = f_deriv(y,y_samp,W,W_samp);
   
@@ -35,11 +37,14 @@ switch step_size
             alpha = armijo_rule(delta,grad,y,y_samp,W,W_samp);
 
             y = y - alpha.*grad;
+            time(i)=toc;
+            accuracy(i)=1-sum(abs(y-y_exact)/length(y));
         end
 
 
     case  3 %exact line search
         for i=1:maxit
+            tic;
             grad = f_deriv(y,y_samp,W,W_samp);
   
             Norm = norm(grad);
@@ -52,6 +57,11 @@ switch step_size
             alpha = exact_line_search(y,y_samp,W,W_samp,grad);
            
             y = y - alpha.*grad;
+            time(i)=toc;
+            accuracy(i)=1-sum(abs(y-y_exact)/length(y));
         end
         
+end
+for k=1:length(time)
+    timeVec(k)=sum(time(1:k));
 end
