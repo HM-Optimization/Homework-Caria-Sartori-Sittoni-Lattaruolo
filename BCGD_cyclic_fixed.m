@@ -1,6 +1,6 @@
 % Cyclic BCGD method
 
-function[y] = BCGD_cyclic_fixed(alpha,y0,maxit,eps,y_samp,W,W_samp)
+function[y, timeVec, Norms, accuracy] = BCGD_cyclic_fixed(alpha,y0,maxit,eps,y_samp,W,W_samp)
 
 % choose a starting point
 y = y0;
