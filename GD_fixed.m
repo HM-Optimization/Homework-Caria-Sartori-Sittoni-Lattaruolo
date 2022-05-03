@@ -1,4 +1,5 @@
-function [y, timeVec, Norms, accuracy] = GD_fixed(alpha,maxit,eps,y,y_samp,W,W_samp,step_size, y_exact)
+function [y, timeVec, Norms, accuracy] = ...
+    GD_fixed(alpha,maxit,eps,y,y_samp,W,W_samp,step_size, y_exact,delta)
 %step_size = metodo per il calcolo dello step size che scegliamo
 % Gradient descent per stepsize fisso
 
@@ -19,7 +20,7 @@ switch step_size
             end
             y = y - alpha.*grad;
             time(i)=toc;
-            accuracy(i)=1-sum(abs(y-y_exact)/length(y));
+            accuracy(i)=1-sum(abs(sign(y)-y_exact)/length(y));
         end
     case 2  %armijo
         for i=1:maxit
@@ -33,12 +34,11 @@ switch step_size
             if Norm<eps
                 break
             end
-            delta=0.5;
             alpha = armijo_rule(delta,grad,y,y_samp,W,W_samp);
 
             y = y - alpha.*grad;
             time(i)=toc;
-            accuracy(i)=1-sum(abs(y-y_exact)/length(y));
+            accuracy(i)=1-sum(abs(sign(y)-y_exact)/length(y));
         end
 
 
@@ -58,7 +58,7 @@ switch step_size
            
             y = y - alpha.*grad;
             time(i)=toc;
-            accuracy(i)=1-sum(abs(y-y_exact)/length(y));
+            accuracy(i)=1-sum(abs(sign(y)-y_exact)/length(y));
         end
         
 end
