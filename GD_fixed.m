@@ -4,7 +4,10 @@ y=y0;
 for i = 1:maxit
     grad = f_deriv(y,y_samp,W,W_samp,u);
   
-    if norm(grad)<eps
+    Norm = norm(grad);
+    Norms(k) = Norm;
+    
+    if Norm<eps
         break
     end
     y = y - alpha.*grad;
