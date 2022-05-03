@@ -1,10 +1,8 @@
-% Randomized BCGD method
-
-function [y] = BCGD_rand_fixed_uniform(alpha,y0,maxit,eps,y_samp,W,W_samp)
+function[y] = BCGD_rand_fixed_uniform(alpha,y0,maxit,eps,y_samp,W,W_samp)
 
 % choose a starting point
-u=len(y0);
 y = y0;
+u = length(y0);
 
 for k = 1:maxit
 
@@ -15,15 +13,9 @@ for k = 1:maxit
     end
 
     % pick the block with uniform probability
-    U = zeros([u,1]);
-    U(randi([1 u]),1) = 1;
+    i = randi([1 u]);
 
     % update
-    y = y - alpha.*U.*grad;
-    
-    %possiamo scrivere tutto in una sola riga di codice sfruttando
-    % U.*grad = grad(randi([1 u]))  ? 
-
-end 
+    y(i) = y(i) - alpha*grad(i);
 
 end
