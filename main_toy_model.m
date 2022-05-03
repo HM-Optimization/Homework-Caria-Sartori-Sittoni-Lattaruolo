@@ -87,6 +87,22 @@ alpha=1/L;
 % Bla Bla
 
 
+figure(1)
+semilogy(Norms)
+title('Norms Plot')
+xlabel('iterations')
+ylabel("Gradiet's norm")
+figure(2)
+plot(timeVec)
+title('Time Plot')
+xlabel('iterations')
+ylabel('comulative time')
+figure(3)
+plot(accuracy)
+title('Accuracy Plot')
+xlabel('iterations')
+ylabel('accuracy')
+
 
 
 
