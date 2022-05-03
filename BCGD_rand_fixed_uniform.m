@@ -8,7 +8,11 @@ for k = 1:maxit
 
     % condition to stop
     grad = f_deriv(y,y_samp,W,W_samp);
-    if norm(grad)<eps
+    
+    Norm = norm(grad);
+    Norms(k) = Norm;
+    
+    if Norm<eps
         break
     end
 
