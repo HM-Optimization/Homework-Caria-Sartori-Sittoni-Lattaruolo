@@ -67,7 +67,7 @@ maxit = 100; %iterazioni max
 
 %Choose the method to be tested
 metodo="BCGDcyc";  %BCGDcyc con armijo (2) è stralento
-step_size=2 % regola per lo step_size
+step_size=2; % regola per lo step_size
 alpha=1/L;   % per lo step_size fisso
 delta=0.5;   % per l'armijo rule
 
