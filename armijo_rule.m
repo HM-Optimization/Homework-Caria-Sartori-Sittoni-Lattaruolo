@@ -1,8 +1,9 @@
 % Armijo Rule
 function [alpha] = armijo_rule(delta, grad, y, y_samp, W, W_samp)
+gamma = 0.25;
 
 if length(grad)~=1
-    gamma = 0.25;
+    
     D = 1;
     m = 0;
     fx = f(y, y_samp, W, W_samp);
