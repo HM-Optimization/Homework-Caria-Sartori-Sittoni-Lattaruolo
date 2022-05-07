@@ -26,7 +26,7 @@ end
 C=W_l+W_u-diag(diag(W));
 
 
-switch 
+switch stepsize
     case 1
         % compute the step
         lambda_max = max(eig(W));
