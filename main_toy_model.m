@@ -1,12 +1,12 @@
 rng('default');  % Random seed for reproducibility
 
-n = 10000; % numero di punti  
-p = 0.02; % frazione di punti etichettati
+n = 10000; % number of points
+p = 0.02; % fraction of labeled points
 
 % sample generator with gaussian distribution
-l = n*p; % numero di sample etichettati (occhio fallo intero)
-u = n*(1-p);
-samp=randperm(n,l);
+l = n*p; % number of labeled samples
+u = n*(1-p);  % number of unlabeled samples
+samp=randperm(n,l); % random sample the labeled indices
 indices=1:n;
 X = [gallery('normaldata',[n/2 2],120)-2; gallery('normaldata',[n/2 2],120)+4];
 y_tot = [ones(n/2,1);-1*(ones(n/2,1))];
@@ -19,32 +19,32 @@ y_exact=y_tot(setdiff(1:end,samp));
 
 %visualize the data
 figure(1)
-scatter(X(:,1),X(:,2),5,y_tot,'filled')
+scatter(X(:,1),X(:,2),5,y_tot,'filled')  % plot with true labels
 figure(2);
 scatter(X(:,1),X(:,2),5,'filled')
 hold on 
-scatter(X_samp(:,1),X_samp(:,2),25,y_samp,'filled')
-hold off
+scatter(X_samp(:,1),X_samp(:,2),25,y_samp,'filled')  % plot with the small set of labeled data
+hold off 
 
 
-%Calcolo distanze "utili", lab-nolab e nolab-lab
+% Compute the distances between lab-nolab and nolab-nolab
 D_samp=pdist2(X_samp,X_unlabeled);
 D=pdist2(X_unlabeled,X_unlabeled);
-% Calcolo pesi exp(-x)
+% Calcolate the weights exp(-dist)
 W_samp= exp(-D_samp);
 W = exp(-D);
 
-%Parameters for the gradient methods
-y0 = -1 + 2.*rand(u,1); %cioè delle etichette casuali per i dati no-lab 
-eps = 1e-4; %tolleranza
-maxit = 1000; %iterazioni max
+% Parameters for the gradient methods
+y0 = -1 + 2.*rand(u,1); % starting points
+eps = 1e-4; % tollerance
+maxit = 1000; % max iteration
 
 disp("fixed step size:1 / armijo rule:2 / exact line search:3")
-step_size=input('Choose step size:'); % regola per lo step_size
-delta=0.5;   % per l'armijo rule
+step_size=input('Choose step size:'); % step_size update rule
+delta=0.5;   % parameter for the armijo rule
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%METODO DEL GRADIENTE CLASSICO
+%CLASSIC GRADIENT METHOD 
     
 [y_GD, timeVec_GD, Norms_GD, accuracy_GD]= ...
     GD(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact,delta); 
