@@ -1,5 +1,22 @@
 function [y, timeVec, Norms, accuracy] = ...
     BCGD_random(maxit,eps,y,y_samp,W,W_samp,step_size,y_exact,delta)
+    
+% BLOCK COORDINTE GRADIENT DESCENTE with randomized rule
+% INPUTS
+% y: starting point for the method
+% y_samp: parameters of the loss function 
+% W and W_samp: weights of the loss function
+% maxit: maximum number of iteration
+% eps: tollerance for the stopping rule
+% y_exact: real labels for accuracy computing
+% stepsize: rule for stepsize selection
+% delta: parameter for the Armijo rule
+% OUTPUTS
+% y: final classification
+% timeVec: vector of computing time per iteration
+% Norms: vector of gradient norms per iteration
+% accuracy: vector of accuracy per iteration
+
 
 maxit=100*maxit;
 u = length(y);
