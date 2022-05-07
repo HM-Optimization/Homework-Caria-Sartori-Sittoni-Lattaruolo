@@ -40,7 +40,7 @@ eps = 1e-4; % tollerance
 maxit = 1000; % max iteration
 
 disp("fixed step size:1 / armijo rule:2 / exact line search:3")
-step_size=input('Choose step size:'); % step_size update rule
+step_size=input('Choose step size rule:'); % step_size update rule
 delta=0.5;   % parameter for the armijo rule
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,32 +66,35 @@ delta=0.5;   % parameter for the armijo rule
 
 %PLOT THE RESULTS
 figure(3)
-semilogy(Norms_GD,LineWidth = 2)
 hold on
+semilogy(Norms_GD,LineWidth = 2)
 semilogy(Norms_BCGDcyc,':',LineWidth = 2)
 semilogy(Norms_BCGDrand,'--',LineWidth = 2)
 hold off
 title('Norms Plot')
+legend('GD','BCGDcyc','BCGDrand')
 xlabel('iterations')
 ylabel("Gradiet's norm")
 
 figure(4)
-plot(timeVec_GD,accuracy_GD,LineWidth = 2)
 hold on
+plot(timeVec_GD,accuracy_GD,LineWidth = 2)
 plot(timeVec_BCGDcyc,accuracy_BCGDcyc,':',LineWidth = 2)
 plot(timeVec_BCGDrand,accuracy_BCGDrand,'--',LineWidth = 2)
 hold off
 title('Accuracy vs Time')
+legend('GD','BCGDcyc','BCGDrand')
 xlabel('time')
 ylabel('accuracy')
 
 figure(5)
-plot(accuracy_GD,LineWidth = 2)
 hold on
+plot(accuracy_GD,LineWidth = 2)
 plot(accuracy_BCGDcyc,':',LineWidth = 2)
 plot(accuracy_BCGDrand,'--',LineWidth = 2)
 hold off
 title('Accuracy Plot')
+legend('GD','BCGDcyc','BCGDrand')
 xlabel('iterations')
 ylabel('accuracy')
 
