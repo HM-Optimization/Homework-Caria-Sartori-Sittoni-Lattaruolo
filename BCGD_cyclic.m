@@ -28,6 +28,7 @@ C=W_l+W_u-diag(diag(W));
 
 switch 
     case 1
+        % compute the step
         lambda_max = max(eig(W));
         L=sqrt(max(C)^2+lambda_max^2);
         alpha=1/L;
@@ -58,7 +59,7 @@ switch
 
         end 
         
-    case 2  %armijo
+    case 2  % armijo
         for k = 1:maxit
             tic;
             grad=zeros([u,1]);
@@ -83,7 +84,7 @@ switch
             end
         end 
 
-    case  3 %exact line search
+    case  3 % exact line search
         for k = 1:maxit
             tic;
             grad=zeros([u,1]);
