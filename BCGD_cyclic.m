@@ -1,7 +1,22 @@
-% Cyclic BCGD method
-
 function [y, timeVec, Norms, accuracy] = ...
     BCGD_cyclic(y,maxit,eps,y_samp,W,W_samp,stepsize,y_exact,delta)
+   
+% BLOCK COORDINTE GRADIENT DESCENTE with cyclic rule
+% INPUTS
+% y: starting point for the method
+% y_samp: parameters of the loss function 
+% W and W_samp: weights of the loss function
+% maxit: maximum number of iteration
+% eps: tollerance for the stopping rule
+% y_exact: real labels for accuracy computing
+% stepsize: rule for stepsize selection
+% delta: parameter for the Armijo rule
+% OUTPUTS
+% y: final classification
+% timeVec: vector of computing time per iteration
+% Norms: vector of gradient norms per iteration
+% accuracy: vector of accuracy per iteration
+
 
 u = length(y);
 for i=1:u
@@ -11,8 +26,7 @@ end
 C=W_l+W_u-diag(diag(W));
 
 
-
-switch stepsize
+switch 
     case 1
         lambda_max = max(eig(W));
         L=sqrt(max(C)^2+lambda_max^2);
