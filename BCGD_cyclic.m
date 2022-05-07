@@ -8,7 +8,7 @@ for i=1:u
     W_l(i) = sum(W_samp(:,i));
     W_u(i) = sum(W(:,i));
 end
-C=W_l+W_u;
+C=W_l+W_u-diag(diag(W));
 
 
 
@@ -53,7 +53,7 @@ switch stepsize
             for i = 1:u
                 grad_z = f_deriv_block(z,y_samp,W,W_samp,i);
                 grad(i)=grad_z;
-                alpha=armijo_rule(delta, C(i) , y, y_samp, W, W_samp);
+                alpha=armijo_rule(delta, C(i), y, y_samp, W, W_samp);
                 z(i) = z(i) - alpha.*grad_z;
             end
         
