@@ -41,18 +41,17 @@ switch step_size
             grad=f_deriv_block(y,y_samp,W,W_samp,i);
             
             Norm = abs(grad);
-            if u*Norm<eps
+            if u*Norm<eps & Norms(floor((k-1)/100))<eps*100
                 break
             end
         
             % update
             y(i) = y(i) - alpha*grad;
-            time(k)=toc;
-            accuracy(k)=1-sum(abs(sign(y)-y_exact)/u);
-            if mod(k,50)==0
-                Norms(k)=norm(f_deriv(y,y_samp,W,W_samp));
-            else
-                Norms(k)=Norms(k-1);
+            
+            if mod(k,100)==0
+                time(k/100)=toc;
+                accuracy(k/100)=1-sum(abs(sign(y)-y_exact)/u);
+                Norms(k/100)=norm(f_deriv(y,y_samp,W,W_samp));
             end
 
         end
@@ -63,7 +62,7 @@ switch step_size
             i = randi([1 u]);
             grad=f_deriv_block(y,y_samp,W,W_samp,i);
             Norm = abs(grad);
-            if u*Norm<eps
+            if u*Norm<eps & Norms(floor((k-1)/100))<eps*100
                 break
             end
  
@@ -71,13 +70,11 @@ switch step_size
         
             % update
             y(i) = y(i) - alpha*grad;
-            time(k)=toc;
-            accuracy(k)=1-sum(abs(sign(y)-y_exact)/u);
-
-            if mod(k,50)==0
-                Norms(k)=norm(f_deriv(y,y_samp,W,W_samp));
-            else
-                Norms(k)=Norms(k-1);
+            
+            if mod(k,100)==0
+                time(k/100)=toc;
+                accuracy(k/100)=1-sum(abs(sign(y)-y_exact)/u);
+                Norms(k/100)=norm(f_deriv(y,y_samp,W,W_samp));
             end
 
         end
@@ -95,12 +92,11 @@ switch step_size
         
             % update
             y(i) = y(i) - alpha*grad;
-            time(k)=toc;
-            accuracy(k)=1-sum(abs(sign(y)-y_exact)/u);
-            if mod(k,50)==0
-                Norms(k)=norm(f_deriv(y,y_samp,W,W_samp));
-            else
-                Norms(k)=Norms(k-1);
+            
+            if mod(k,100)==0
+                time(k/100)=toc;
+                accuracy(k/100)=1-sum(abs(sign(y)-y_exact)/u);
+                Norms(k/100)=norm(f_deriv(y,y_samp,W,W_samp));
             end
         end
 end
