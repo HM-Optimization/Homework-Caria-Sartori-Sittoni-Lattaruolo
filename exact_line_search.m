@@ -1,7 +1,7 @@
 %funzione per trovare l'alpha esatto rispetto alla loss che abbiamo
 function [alpha]=exact_line_search(y,y_samp,W,W_samp,grad)
-
-if lenght(grad)~=1
+% if we are 
+if length(grad)~=1
 
     u=length(y);
     l=length(y_samp);
