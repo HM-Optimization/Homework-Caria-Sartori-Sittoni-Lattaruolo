@@ -6,6 +6,6 @@ sum2 = 0;
 sum1 = sum( W_samp(:,j).*(y(j,1)-y_samp) );
 sum2 = sum( W(:,j).*(y(j,1)-y) );
 
-grad = sum1 + sum2;
+grad = 2*(sum1 + sum2);
 
 end
