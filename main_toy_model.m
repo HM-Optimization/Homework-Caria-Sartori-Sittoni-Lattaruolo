@@ -17,13 +17,15 @@ X_unlabeled = X(setdiff(1:end,samp),:);
 y_samp=y_tot(samp);
 y_exact=y_tot(setdiff(1:end,samp));
 
-%visualize the data
+% visualize the data
 figure(1)
 scatter(X(:,1),X(:,2),5,y_tot,'filled')  % plot with true labels
+title('Toy Dataset - true labels');
 figure(2);
 scatter(X(:,1),X(:,2),5,'filled')
 hold on 
 scatter(X_samp(:,1),X_samp(:,2),25,y_samp,'filled')  % plot with the small set of labeled data
+title('Toy Dataset - 2% labeled');
 hold off 
 
 
@@ -44,7 +46,7 @@ step_size=input('Choose step size rule:'); % step_size update rule
 delta=0.5;   % parameter for the armijo rule
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%CLASSIC GRADIENT METHOD 
+% CLASSIC GRADIENT METHOD 
     
 [y_GD, timeVec_GD, Norms_GD, accuracy_GD]= ...
     GD(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact,delta); 
@@ -64,44 +66,58 @@ delta=0.5;   % parameter for the armijo rule
     BCGD_random(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact,delta);
 
 
-%PLOT THE RESULTS
+% PLOT THE RESULTS
+
+% Norms plots
 figure(3)
-hold on
 semilogy(Norms_GD,LineWidth = 2)
+hold on
 semilogy(Norms_BCGDcyc,':',LineWidth = 2)
 semilogy(Norms_BCGDrand,'--',LineWidth = 2)
 hold off
-title('Norms Plot')
-legend('GD','BCGDcyc','BCGDrand')
+title('Toy Dataset - Norms Plot')
 xlabel('iterations')
 ylabel("Gradiet's norm")
+legend('GD', 'BCGDcyc', 'BCGDrand')
 
+% Accuracy vs Time
 figure(4)
-hold on
 plot(timeVec_GD,accuracy_GD,LineWidth = 2)
+hold on
 plot(timeVec_BCGDcyc,accuracy_BCGDcyc,':',LineWidth = 2)
 plot(timeVec_BCGDrand,accuracy_BCGDrand,'--',LineWidth = 2)
 hold off
-title('Accuracy vs Time')
-legend('GD','BCGDcyc','BCGDrand')
+title('Toy Dataset - Accuracy vs Time')
 xlabel('time')
 ylabel('accuracy')
+legend('GD', 'BCGDcyc', 'BCGDrand')
 
+% Accuracy plots
 figure(5)
-hold on
 plot(accuracy_GD,LineWidth = 2)
+hold on
 plot(accuracy_BCGDcyc,':',LineWidth = 2)
 plot(accuracy_BCGDrand,'--',LineWidth = 2)
 hold off
-title('Accuracy Plot')
-legend('GD','BCGDcyc','BCGDrand')
+title('Toy Dataset - Accuracy Plot')
 xlabel('iterations')
 ylabel('accuracy')
+legend('GD', 'BCGDcyc', 'BCGDrand')
 
-%visualize final data labeled
+
+% VISUALIZE FINAL DATA LABELED
+
+% Gradient Descent
 figure(6)
 scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,sign(y_GD),'filled')
+title('Toy Dataset - Gradient Descent');
+
+% BCGD cyclic
 figure(7)
 scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,sign(y_BCGDcyc),'filled')
+title('Toy Dataset - BCGD cyclic');
+
+% BCGD random
 figure(8)
 scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,sign(y_BCGDrand),'filled')
+title('Toy Dataset - BCGD random');
