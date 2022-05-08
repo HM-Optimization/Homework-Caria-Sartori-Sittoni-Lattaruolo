@@ -100,8 +100,8 @@ ylabel('accuracy')
 
 %visualize final data labeled
 figure(6)
-scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,y_GD,'filled')
+scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,sign(y_GD),'filled')
 figure(7)
-scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,y_BCGDcyc,'filled')
+scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,sign(y_BCGDcyc),'filled')
 figure(8)
-scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,y_BCGDrand,'filled')
+scatter(X_unlabeled(:,1),X_unlabeled(:,2),5,sign(y_BCGDrand),'filled')
