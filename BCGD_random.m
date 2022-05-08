@@ -30,7 +30,7 @@ Norms(1)=norm(f_deriv(y,y_samp,W,W_samp)); % we compute the norm ones every 50 i
 switch step_size
     case 1
         lambda_max = max(eig(W));
-        L=sqrt(max(C)^2+lambda_max^2);
+        L=2*sqrt(max(C)^2+lambda_max^2);
         alpha=1/L;
 
         for k = 2:maxit+1
