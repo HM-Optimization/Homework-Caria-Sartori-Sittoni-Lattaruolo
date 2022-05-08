@@ -30,7 +30,7 @@ switch stepsize
     case 1
         % compute the step
         lambda_max = max(eig(W));
-        L=sqrt(max(C)^2+lambda_max^2);
+        L=2*sqrt(max(C)^2+lambda_max^2);
         alpha=1/L;
 
         for k = 1:maxit
