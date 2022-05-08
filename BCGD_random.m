@@ -22,11 +22,13 @@ function [y, timeVec, Norms, accuracy] = ...
 
 maxit=100*maxit;
 u = length(y);
+W_l = zeros([1,u]);
+W_u = zeros([1,u]);
 for i=1:u
     W_l(i) = sum(W_samp(:,i));
     W_u(i) = sum(W(:,i));
 end
-C=W_l+W_u-diag(W);
+C=W_l+W_u;
 
 Norms(1)=norm(f_deriv(y,y_samp,W,W_samp)); % we compute the norm ones every 50 iteration
 switch step_size
