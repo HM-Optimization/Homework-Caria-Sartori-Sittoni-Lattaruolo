@@ -1,7 +1,8 @@
 function [y, timeVec, Norms, accuracy] = ...
     BCGD_random(maxit,eps,y,y_samp,W,W_samp,step_size,y_exact,delta)
     
-% BLOCK COORDINTE GRADIENT DESCENTE with randomized rule
+% BLOCK COORDINATE GRADIENT DESCENT with randomized rule
+
 % INPUTS
 % y: starting point for the method
 % y_samp: parameters of the loss function 
@@ -11,6 +12,7 @@ function [y, timeVec, Norms, accuracy] = ...
 % y_exact: real labels for accuracy computing
 % stepsize: rule for stepsize selection
 % delta: parameter for the Armijo rule
+
 % OUTPUTS
 % y: final classification
 % timeVec: vector of computing time per iteration
@@ -55,7 +57,7 @@ switch step_size
             end
 
         end
-    case 2 %armijo rule
+    case 2 % armijo rule
         for k = 2:maxit+1
             tic;
             % pick the block with uniform probability
@@ -78,7 +80,7 @@ switch step_size
             end
 
         end
-    case 3 %exact line search        
+    case 3 % exact line search        
         for k = 2:maxit+1
             tic;
             i = randi([1 u]);
