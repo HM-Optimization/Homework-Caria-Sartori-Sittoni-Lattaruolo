@@ -1,7 +1,8 @@
 function [y, timeVec, Norms, accuracy] = ...
     BCGD_cyclic(y,maxit,eps,y_samp,W,W_samp,stepsize,y_exact,delta)
    
-% BLOCK COORDINTE GRADIENT DESCENTE with cyclic rule
+% BLOCK COORDINATE GRADIENT DESCENT with cyclic rule
+
 % INPUTS
 % y: starting point for the method
 % y_samp: parameters of the loss function 
@@ -11,6 +12,7 @@ function [y, timeVec, Norms, accuracy] = ...
 % y_exact: real labels for accuracy computing
 % stepsize: rule for stepsize selection
 % delta: parameter for the Armijo rule
+
 % OUTPUTS
 % y: final classification
 % timeVec: vector of computing time per iteration
