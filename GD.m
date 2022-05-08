@@ -21,7 +21,7 @@ switch step_size
         end
         C=W_l+W_u;
         lambda_max = max(eig(W));
-        L=sqrt(max(C)^2+lambda_max^2);
+        L=2*sqrt(max(C)^2+lambda_max^2);
         alpha=1/L;   % per lo step_size fisso
         for i = 1:maxit
             tic;
