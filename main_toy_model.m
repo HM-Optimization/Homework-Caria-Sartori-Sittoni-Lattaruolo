@@ -35,6 +35,8 @@ D=pdist2(X_unlabeled,X_unlabeled);
 % Calcolate the weights exp(-dist)
 W_samp= exp(-D_samp);
 W = exp(-D);
+W_samp(W_samp<=1e-2)=0;  % we put a threshold for the min weight
+w(W<=1e-2)=0;
 
 % Parameters for the gradient methods
 y0 = -1 + 2.*rand(u,1); % starting points
