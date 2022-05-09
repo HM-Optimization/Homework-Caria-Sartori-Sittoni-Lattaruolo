@@ -13,7 +13,7 @@ X2 = table2array(data(:,2));
 Y = table2array(data(:,3));
 
 % Changing class 0 to class -1
-Y=2*Y-1
+Y=2*Y-1;
 
 % Removing outliers
 X1 = X1(X2<900);
