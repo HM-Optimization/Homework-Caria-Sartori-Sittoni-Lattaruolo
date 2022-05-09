@@ -11,10 +11,8 @@ function [grad] = f_deriv_block(y,y_samp,W,W_samp,j)
 % OUTPUT
 % grad: j-th component of gradient vector of f
 
-sum1 = 0;
-sum2 = 0;
-sum1 = sum( W_samp(:,j).*(y(j,1)-y_samp) );
-sum2 = sum( W(:,j).*(y(j,1)-y) );
+sum1 = W_samp(:,j)'*(y(j,1)-y_samp));
+sum2 = W(j,:)'*(y(j,1)-y));
 
 grad = 2*(sum1 + sum2);
 
