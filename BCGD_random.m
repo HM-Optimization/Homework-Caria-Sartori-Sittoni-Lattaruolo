@@ -56,7 +56,6 @@ switch step_size
 
         end
     case 2 % armijo rule
-    delta=0.5;   % parameter for the armijo rule
 
         for k = 2:maxit+1
             tic;
