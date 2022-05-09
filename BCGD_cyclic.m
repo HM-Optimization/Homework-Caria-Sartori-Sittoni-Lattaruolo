@@ -1,5 +1,5 @@
 function [y, timeVec, Norms, accuracy] = ...
-    BCGD_cyclic(y,maxit,eps,y_samp,W,W_samp,stepsize,y_exact,delta)
+    BCGD_cyclic(y,maxit,eps,y_samp,W,W_samp,stepsize,y_exact)
    
 % BLOCK COORDINATE GRADIENT DESCENT with cyclic rule
 
@@ -64,6 +64,8 @@ switch stepsize
         end 
         
     case 2  % armijo
+    delta=0.5;   % parameter for the armijo rule
+
         for k = 1:maxit
             tic;
             grad=zeros([u,1]);
