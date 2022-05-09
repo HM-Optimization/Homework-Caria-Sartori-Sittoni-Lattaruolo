@@ -1,5 +1,17 @@
-% Armijo Rule
-function [alpha] = armijo_rule(delta, grad, y, y_samp, W, W_samp)
+function [alpha] = armijo_rule(grad, y, y_samp, W, W_samp)
+
+% ARMIJO RULE
+
+% INPUTS
+% grad: gradient vector of f
+% y: point in which calculate f and the gradient
+% y_samp: parameters of the loss fuction
+% w,W_samp: weights of the loss function
+
+% OUTPUT
+% alpha: line search with Armijo rule
+
+delta = 0.5;
 gamma = 0.25;
 
 if length(grad)~=1
