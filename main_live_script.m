@@ -13,18 +13,14 @@ X2 = table2array(data(:,2));
 Y = table2array(data(:,3));
 
 % Changing class 0 to class -1
-for i = 1:length(Y)
-    if Y(i)==0
-        Y(i)=-1;
-    end
-end
+Y=2*Y-1
 
 % Removing outliers
 X1 = X1(X2<900);
 X2 = X2(X2<900);
 Y = Y(X2<900);
 
-% Normalizing the features
+% Re-scaling the features
 X1 = 100*(X1 - min(X1)) / (max(X1)-min(X1));
 X2 = 100*(X2 - min(X2)) / (max(X2)-min(X2));
 
