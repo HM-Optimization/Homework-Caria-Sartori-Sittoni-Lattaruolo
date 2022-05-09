@@ -70,6 +70,8 @@ D=pdist2(X_unlabeled,X_unlabeled);
 % Calcolate the weights exp(-dist)
 W_samp= exp(-D_samp);
 W = exp(-D);
+W_samp(W_samp<=1e-2)=0;  % we put a threshold for the min weight
+w(W<=1e-2)=0;
 
 % Parameters for the gradient methods
 y0 = zeros(u,1); % starting points
@@ -78,27 +80,26 @@ maxit = 1000; % max iteration
 
 disp("fixed step size:1 / armijo rule:2 / exact line search:3")
 step_size=input('Choose step size rule:'); % step_size update rule
-delta=0.5;   % parameter for the armijo rule
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CLASSIC GRADIENT METHOD 
     
 [y_GD, timeVec_GD, Norms_GD, accuracy_GD]= ...
-    GD(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact,delta); 
+    GD(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact); 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BCGD with cyclic rule
 
 [y_BCGDcyc, timeVec_BCGDcyc, Norms_BCGDcyc, accuracy_BCGDcyc] = ...
-    BCGD_cyclic(y0,maxit,eps,y_samp,W,W_samp,step_size,y_exact,delta);
+    BCGD_cyclic(y0,maxit,eps,y_samp,W,W_samp,step_size,y_exact);
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BCGD with randomized rule
 
 [y_BCGDrand, timeVec_BCGDrand, Norms_BCGDrand, accuracy_BCGDrand] = ...
-    BCGD_random(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact,delta);
+    BCGD_random(maxit,eps,y0,y_samp,W,W_samp,step_size,y_exact);
 
 % PLOT THE RESULTS
 
