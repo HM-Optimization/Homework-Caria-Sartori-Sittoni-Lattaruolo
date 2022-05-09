@@ -21,12 +21,8 @@ function [y, timeVec, Norms, accuracy] = ...
 
 
 u = length(y);
-W_l = zeros([1,u]);
-W_u = zeros([1,u]);
-for i=1:u
-    W_l(i) = sum(W_samp(:,i));
-    W_u(i) = sum(W(:,i));
-end
+W_l=sum(W_samp)';
+W_u=sum(W)';
 C=W_l+W_u;
 
 
