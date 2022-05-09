@@ -1,10 +1,12 @@
 function[grad] = f_deriv(y,y_samp,W,W_samp)
 
 % GRADIENT COMPUTATION FOR f 
+
 % INPUTS
 % y: point in which calculate the gradient
 % y_samp: parameters of the loss fuction
 % w,W_samp: weights of the loss function
+
 % OUTPUT
 % grad: gradient vector of f
 
