@@ -23,7 +23,7 @@ function [y, timeVec, Norms, accuracy] = ...
 u = length(y);
 W_l=sum(W_samp)';
 W_u=sum(W)';
-C=W_l+W_u;
+C=W_l+W_u-1;
 
 
 switch stepsize
