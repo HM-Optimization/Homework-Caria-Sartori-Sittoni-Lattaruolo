@@ -86,7 +86,7 @@ switch step_size
             i = randi([1 u]);
             grad=f_deriv_block(y,y_samp,W,W_samp,i);
             Norm = abs(grad);
-            if u*Norm<eps & Norms(k-1)<eps*100
+            if u*Norm<eps & Norms(floor((k-1)/100))<eps*100
                 break
             end
             % pick the block with uniform probability
