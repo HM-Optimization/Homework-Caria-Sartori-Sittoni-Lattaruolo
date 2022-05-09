@@ -6,19 +6,14 @@ function [y, timeVec, Norms, accuracy] = ...
 u=length(y);
 time=[1];
 
-% Calcolo L, lipschitz constant
-W_l = zeros([1,u]);
-W_u = zeros([1,u]);
 
 
 
 switch step_size
 
     case 1  %alpha fisso
-        for i=1:u
-            W_l(i) = sum(W_samp(:,i));
-             W_u(i) = sum(W(:,i));
-        end
+        W_l=sum(W_samp)';
+        W_u=sum(W)';
         C=W_l+W_u;
         lambda_max = max(eig(W));
         L=2*sqrt(max(C)^2+lambda_max^2);
@@ -26,7 +21,7 @@ switch step_size
         for i = 1:maxit
             tic;
             grad = f_deriv(y,y_samp,W,W_samp);
-  
+ 
             Norm = norm(grad);
             Norms(i) = Norm;
             
