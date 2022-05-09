@@ -24,7 +24,7 @@ maxit=100*maxit;
 u = length(y);
 W_l=sum(W_samp)';
 W_u=sum(W)';
-C=W_l+W_u;
+C=W_l+W_u-1;
 
 Norms(1)=norm(f_deriv(y,y_samp,W,W_samp)); % we compute the norm ones every 50 iteration
 switch step_size
