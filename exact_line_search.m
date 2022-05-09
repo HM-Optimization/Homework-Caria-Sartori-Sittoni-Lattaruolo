@@ -1,10 +1,13 @@
 function [alpha]=exact_line_search(y,y_samp,W,W_samp,grad)
+
 % EXACT LINE SEARCH FUNCTION
+
 % INPUTS
 % y: starting point for the line search
 % grad: direction of the line search
 % y_samp: parameter of the function
 % W,W_samp: weights of the function
+
 % OUTPUT
 % alpha: optimal stepsize
 
