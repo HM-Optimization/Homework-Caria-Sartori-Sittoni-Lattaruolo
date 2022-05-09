@@ -1,8 +1,10 @@
 function [loss] = f(y, y_samp, W, W_samp)
 
 % LOSS FUNCTION
+
 % INPUTS 
 % y, y_samp, W, W_samp: arguments of the loss fuction
+
 % OUTPUT 
 % loss: value of the function we want to minimize
 
