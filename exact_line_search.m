@@ -22,7 +22,7 @@ if length(grad)~=1
     alpha=num/den;
 
 else
-    alpha=1/(grad-1);
+    alpha=1/(2*grad);
 end
 
 end
