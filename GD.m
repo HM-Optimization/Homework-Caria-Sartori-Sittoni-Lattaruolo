@@ -7,8 +7,6 @@ u=length(y);
 time=[1];
 
 
-
-
 switch step_size
 
     case 1  %alpha fisso
@@ -33,7 +31,6 @@ switch step_size
             accuracy(i)=1-sum(abs(sign(y)-y_exact)/u);
         end
     case 2  %armijo
-    delta=0.5;   % parameter for the armijo rule
 
         for i=1:maxit
             tic;
