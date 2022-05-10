@@ -69,7 +69,7 @@ switch stepsize
             for i = 1:u
                 grad_z = f_deriv_block(z,y_samp,W,W_samp,i);
                 grad(i)=grad_z;
-                alpha=armijo_rule(delta, C(i), y, y_samp, W, W_samp);
+                alpha=armijo_rule(C(i), y, y_samp, W, W_samp);
                 z(i) = z(i) - alpha.*grad_z;
             end
         
