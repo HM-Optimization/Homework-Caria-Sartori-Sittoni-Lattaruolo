@@ -121,11 +121,16 @@ plot(timeVec_GD,accuracy_GD,LineWidth = 2)
 hold on
 plot(timeVec_BCGDcyc,accuracy_BCGDcyc,':',LineWidth = 2)
 plot(timeVec_BCGDrand,accuracy_BCGDrand,'--',LineWidth = 2)
+plot([0 0], [-0.2 1.2], Color='black', DisplayName='x-axis');
+plot([-100 800], [0,0], Color='black');
 hold off
 title('Occupancy Detection Dataset - Accuracy vs Time')
 xlabel('time')
 ylabel('accuracy')
 legend('GD', 'BCGDcyc', 'BCGDrand')
+axis([-100 800 -0.2 1.2])
+text(600, 0.05, 'x-axis')
+
 
 % Accuracy plots
 figure(5)
@@ -133,11 +138,15 @@ plot(accuracy_GD,LineWidth = 2)
 hold on
 plot(accuracy_BCGDcyc,':',LineWidth = 2)
 plot(accuracy_BCGDrand,'--',LineWidth = 2)
+plot([0 0], [-0.2 1.2], Color='black', DisplayName='x-axis');
+plot([-100 1000], [0,0], Color='black');
 hold off
 title('Occupancy Detection Dataset - Accuracy Plot')
 xlabel('iterations')
 ylabel('accuracy')
 legend('GD', 'BCGDcyc', 'BCGDrand')
+axis([-100 1000 -0.2 1.2])
+text(600, 0.05, 'x-axis')
 
 
 % VISUALIZE FINAL DATA LABELED
