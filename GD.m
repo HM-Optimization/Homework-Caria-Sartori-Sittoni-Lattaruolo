@@ -43,7 +43,7 @@ switch step_size
             if Norm<eps
                 break
             end
-            alpha = armijo_rule(delta,grad,y,y_samp,W,W_samp);
+            alpha = armijo_rule(grad,y,y_samp,W,W_samp);
 
             y = y - alpha.*grad;
             time(i)=toc;
