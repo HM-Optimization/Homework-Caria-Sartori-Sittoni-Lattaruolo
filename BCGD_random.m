@@ -67,7 +67,7 @@ switch step_size
                 break
             end
  
-            alpha=armijo_rule(delta, C(i), y, y_samp, W, W_samp);
+            alpha=armijo_rule(C(i), y, y_samp, W, W_samp);
         
             % update
             y(i) = y(i) - alpha*grad;
