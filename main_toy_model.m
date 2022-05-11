@@ -79,7 +79,7 @@ hold off
 title('Toy Dataset - Norms Plot')
 xlabel('iterations')
 ylabel("Gradiet's norm")
-legend('GD', 'BCGDcyc', 'BCGDrand')
+legend('GD', 'BCGDcyc', 'BCGDrand', Location='best')
 
 % Accuracy vs Time
 figure(4)
@@ -91,7 +91,7 @@ hold off
 title('Toy Dataset - Accuracy vs Time')
 xlabel('time')
 ylabel('accuracy')
-legend('GD', 'BCGDcyc', 'BCGDrand')
+legend('GD', 'BCGDcyc', 'BCGDrand', Location='best')
 
 % Accuracy plots
 figure(5)
@@ -103,7 +103,7 @@ hold off
 title('Toy Dataset - Accuracy Plot')
 xlabel('iterations')
 ylabel('accuracy')
-legend('GD', 'BCGDcyc', 'BCGDrand')
+legend('GD', 'BCGDcyc', 'BCGDrand', Location='best')
 
 
 % VISUALIZE FINAL DATA LABELED
