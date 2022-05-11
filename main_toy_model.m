@@ -83,10 +83,10 @@ legend('GD', 'BCGDcyc', 'BCGDrand')
 
 % Accuracy vs Time
 figure(4)
-plot(timeVec_GD,accuracy_GD,LineWidth = 2)
+semilogx(timeVec_GD,accuracy_GD,LineWidth = 2)
 hold on
-plot(timeVec_BCGDcyc,accuracy_BCGDcyc,':',LineWidth = 2)
-plot(timeVec_BCGDrand,accuracy_BCGDrand,'--',LineWidth = 2)
+semilogx(timeVec_BCGDcyc,accuracy_BCGDcyc,':',LineWidth = 2)
+semilogx(timeVec_BCGDrand,accuracy_BCGDrand,'--',LineWidth = 2)
 hold off
 title('Toy Dataset - Accuracy vs Time')
 xlabel('time')
