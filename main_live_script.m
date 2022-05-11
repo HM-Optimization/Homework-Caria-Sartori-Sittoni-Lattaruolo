@@ -105,10 +105,10 @@ step_size=input('Choose step size rule:'); % step_size update rule
 
 % Norms plots
 figure(3)
-plot(Norms_GD,LineWidth = 2)
+semilogy(Norms_GD,LineWidth = 2)
 hold on
-plot(Norms_BCGDcyc,':',LineWidth = 2)
-plot(Norms_BCGDrand,'--',LineWidth = 2)
+semilogy(Norms_BCGDcyc,':',LineWidth = 2)
+semilogy(Norms_BCGDrand,'--',LineWidth = 2)
 hold off
 title('Occupancy Detection Dataset - Norms Plot')
 xlabel('iterations')
